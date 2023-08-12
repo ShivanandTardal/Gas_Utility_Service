@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Service Request Details</h2>
+  <p><strong>Request Type:</strong> {{ service_request.request_type }}</p>
+  <p><strong>Status:</strong> {{ service_request.status }}</p>
+  <p><strong>Submitted at:</strong> {{ service_request.submitted_at }}</p>
+  <p><strong>Resolved at:</strong> {{ service_request.resolved_at }}</p>
+  <p><strong>Details:</strong></p>
+  <p>{{ service_request.details }}</p>
+  <h3>Attachments:</h3>
+  <ul>
+    {% for attachment in service_request.attachments.all %}
+      <li><a href="{{ attachment.file.url }}">{{ attachment.file.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
